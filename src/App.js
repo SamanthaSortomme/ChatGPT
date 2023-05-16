@@ -44,6 +44,7 @@ const App = () => {
       }
       if (currentTitle && value && message){
         setPreviousChats(previousChats => (
+          //not defined===================================
           [...prevChats,
             {
                 title: currentTitle,
@@ -63,6 +64,7 @@ const App = () => {
     // console.log(value)
     console.log(previousChats)
     const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle)
+// array is not defined, set is not defined==============================
     const uniqueTitles = array.from(new set(previousChats.map(previousChat => previousChat.title)))
     console.log(uniqueTitles)
 
