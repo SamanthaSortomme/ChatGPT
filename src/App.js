@@ -16,57 +16,56 @@ const App = () => {
     setCurrentTitle(uniqueTitles)
   }
 
-      const getMessages = async () => {
-        const options = {
-          method: "POST",
-          body : JSON.stringify({
-                message: value
-                // message: "Hello how are you?"
-        }),
-        headers: {
-          "content-Type": "application/json"
-        }
+  const getMessages = async () => {
+    const options = {
+      method: "POST",
+      body : JSON.stringify({
+            message: value
+            // message: "Hello how are you?"
+      }),
+      headers: {
+        "content-Type": "application/json"
       }
-        try {
-          const response = await fetch('https://localhost:8000/completions', options)
-          const data = await response.json()
-          console.log(data)
-          setMessage(data.choices[0].message)
-        } catch (error) {
-          console.error(error)
-        }
     }
+    try {
+      const response = await fetch('https://localhost:8000/completions', options)
+      const data = await response.json()
+      console.log(data)
+      setMessage(data.choices[0].message)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
-    useEffect(() => {
-      console.log(currentTitle, value, message)
-      if (!currentTitle && value && message) {
-        setCurrentTitle(value)
-      }
-      if (currentTitle && value && message){
-        setPreviousChats(previousChats => (
-          //not defined===================================
-          [...prevChats,
-            {
-                title: currentTitle,
-                role: "user",
-                content: value
-            },
-            {
+    //====================================================================
+  useEffect(() => {
+    console.log(currentTitle, value, message)
+    if (!currentTitle && value && message) {
+      setCurrentTitle(value)
+    }
+    if (currentTitle && value && message){
+      setPreviousChats(prevChats => (
+        [...prevChats,
+          {
               title: currentTitle,
-              role: message.rol,
-              content: message.content
-            }
-          ]
-        ))
-      }
-    }, [message, currentTitle])
-    // console.log(message)
-    // console.log(value)
-    console.log(previousChats)
-    const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle)
-// array is not defined, set is not defined==============================
-    const uniqueTitles = array.from(new set(previousChats.map(previousChat => previousChat.title)))
-    console.log(uniqueTitles)
+              role: "user",
+              content: value
+          },
+          {
+            title: currentTitle,
+            role: message.role,
+            content: message.content
+          }
+        ]
+      ))
+    }
+  }, [message, currentTitle])
+  // console.log(message)
+  // console.log(value)
+  console.log(previousChats)
+  const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle)
+  const uniqueTitles = Array.from(new Set(previousChats.map(previousChat => previousChat.title)))
+  console.log(uniqueTitles)
 
   return (
     <div className="App">

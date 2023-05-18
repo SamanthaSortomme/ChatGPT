@@ -3,6 +3,7 @@
 * {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
+  /* background-color: #343541; */
 }
 
 body {
@@ -10,7 +11,7 @@ body {
   padding: 0;
 }
 
-.app {
+.App {
   background-color: #343541;
   display: flex;
 }
