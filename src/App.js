@@ -21,7 +21,6 @@ const App = () => {
       method: "POST",
       body : JSON.stringify({
             message: value
-            // message: "Hello how are you?"
       }),
       headers: {
         "content-Type": "application/json"
@@ -72,7 +71,7 @@ const App = () => {
       <section className="side-bar">
         <button onClick={createNewChat}>+ New chat</button>
         <ul className="history">
-          {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={() => handleClick(uniqueTitle)}></li>)}
+          {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={() => handleClick(uniqueTitle)}>{uniqueTitle}</li>)}
         </ul>
         <nav>
           <p> The Real Book Club</p>
