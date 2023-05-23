@@ -12,8 +12,8 @@ const App = () => {
     setCurrentTitle(null)
   }
 
-  const handleClick = (uniqueTitles) => {
-    setCurrentTitle(uniqueTitles)
+  const handleClick = (uniqueTitle) => {
+    setCurrentTitle(uniqueTitle)
   }
 
   const getMessages = async () => {
@@ -72,7 +72,7 @@ const App = () => {
       <section className="side-bar">
         <button onClick={createNewChat}>+ New chat</button>
         <ul className="history">
-          {uniqueTitles?.map((uniqueTitles, index) => <li key={index} onClick={() => handleClick}>{uniqueTitles}</li>)}
+          {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={() => handleClick(uniqueTitle)}></li>)}
         </ul>
         <nav>
           <p> The Real Book Club</p>
@@ -93,8 +93,7 @@ const App = () => {
             <div id="submit" onClick={getMessages}>➢</div>
           </div>
           <p className="info">
-            Stolen text from website, I did not copy it
-            help us improve
+            Stolen text from website...
           </p>
         </div>
       </section>
