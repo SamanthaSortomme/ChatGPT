@@ -1,10 +1,10 @@
 import { useState, useEffect} from "react"
 
 const App = () => {
-  const [ value, setValue] = useState(null)
   const [ message, setMessage] = useState(null)
+  const [ value, setValue] = useState('')
   const [ previousChats, setPreviousChats] = useState([])
-  const [ currentTitle, setCurrentTitle] = useState([null])
+  const [ currentTitle, setCurrentTitle] = useState(null)
 
   const createNewChat = () => {
     setMessage(null)
@@ -28,7 +28,7 @@ const App = () => {
       }
     }
     try {
-      const response = await fetch('https://localhost:8000/completions', options)
+      const response = await fetch('http://localhost:8000/completions', options)
       const data = await response.json()
       console.log(data)
       setMessage(data.choices[0].message)
@@ -64,7 +64,7 @@ const App = () => {
   // console.log(value)
   console.log(previousChats)
   const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle)
-  const uniqueTitles = Array.from(new Set(previousChats.map(previousChat => previousChat.title)))
+  const uniqueTitles = Array.from(new Set(previousChats.map((previousChat) => previousChat.title)))
   console.log(uniqueTitles)
 
   return (
